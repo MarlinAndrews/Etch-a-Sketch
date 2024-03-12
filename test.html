@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Etch-a-Sketch</title>
+    <style>
+        /* CSS styles for the container and square elements */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 960px;
+        }
+
+        .square {
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Button to create a new grid -->
+    <button onclick="createGrid()">Create New Grid</button>
+    <!-- Container to hold the squares -->
+    <div class="container"></div>
+
+    <script>
+        // Function to create a new grid
+function createGrid() {
+    var container = document.querySelector('.container');
+    
+
+    // Prompt the user for the number of squares per side
+    var gridSize = prompt('Enter the number of squares per side for the new grid (maximum 100):');
+    //pick the small number between 100 and the number the user entered
+    gridSize = Math.min(gridSize, 100);
+
+    // Calculate the size of each square based on the grid size
+    var squareSize = 960 / gridSize;
+
+    // Create the squares and append them to the container
+    for (var i = 0; i < gridSize * gridSize; i++) {
+        var square = document.createElement('div');
+        square.classList.add('square');
+        square.style.width = squareSize + 'px';
+        square.style.height = squareSize + 'px';
+        container.appendChild(square);
+    }
+}
+
+// Call the createGrid function to initialize the grid
+createGrid();
+    </script>
+</body>
+</html>
